@@ -9,7 +9,6 @@
   <meta property="og:description" content="Təbiət içində ailəvi restoran, milli mətbəx və WhatsApp ilə rahat rezervasiya.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#172b24">
-  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -279,9 +278,9 @@
       inset: 0;
       z-index: -3;
       background:
-        linear-gradient(90deg, rgba(10, 13, 10, .84), rgba(10, 13, 10, .46) 46%, rgba(10, 13, 10, .08)),
-        linear-gradient(0deg, rgba(23,43,36,.94), rgba(23,43,36,0) 44%),
-        url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=90") center 52%/cover;
+        linear-gradient(90deg, rgba(10, 13, 10, .9), rgba(10, 13, 10, .52) 48%, rgba(10, 13, 10, .12)),
+        linear-gradient(0deg, rgba(23,43,36,.96), rgba(23,43,36,0) 46%),
+        url("assets/qaya-landscape.jpg") center 48%/cover;
       transform: scale(1.04);
       animation: heroBreath 20s ease-in-out infinite alternate;
     }
@@ -298,6 +297,25 @@
     @keyframes heroBreath {
       from { transform: scale(1.04) translate3d(0,0,0); }
       to { transform: scale(1.1) translate3d(-1.2%, -1%, 0); }
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: .34;
+      filter: saturate(1.12) contrast(1.05);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-grid {
@@ -407,7 +425,7 @@
       height: 228px;
       background:
         linear-gradient(180deg, transparent 42%, rgba(0,0,0,.58)),
-        url("https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1100&q=86") center/cover;
+        url("assets/qaya-grill-platter.jpg") center 44%/cover;
       position: relative;
     }
 
@@ -560,7 +578,7 @@
       border-radius: var(--radius);
       background:
         linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.42)),
-        url("https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=86") center/cover;
+        url("assets/qaya-cabin.jpg") center/cover;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow);
@@ -622,7 +640,7 @@
       color: #fff;
       background:
         linear-gradient(180deg, rgba(23,43,36,.94), rgba(21,19,15,.97)),
-        url("https://images.unsplash.com/photo-1514517220035-943113264618?auto=format&fit=crop&w=2200&q=84") center/cover fixed;
+        url("assets/qaya-grill-platter.jpg") center 44%/cover fixed;
       overflow: hidden;
     }
 
@@ -1156,16 +1174,11 @@
         padding: 8px;
       }
       .brand-text span { max-width: 132px; }
-      .brand-text small { display: none; }
-      .icon-btn {
-        display: none;
+      .brand-text small {
+        display: block;
+        font-size: 10px;
       }
-      .header-actions .btn {
-        width: 44px;
-        min-height: 44px;
-        padding: 0;
-      }
-      .call-label {
+      .header-actions {
         display: none;
       }
       .hero {
@@ -1175,6 +1188,10 @@
       }
       .hero::before {
         background-position: 58% 50%;
+      }
+      .hero-video {
+        opacity: .28;
+        object-position: center;
       }
       h1 {
         font-size: clamp(48px, 15vw, 68px);
@@ -1352,6 +1369,9 @@
 
   <main id="top">
     <section class="hero" aria-label="Qaya Restaurant">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/qaya-landscape.jpg" aria-hidden="true">
+        <source src="assets/qaya-hero-video.mp4" type="video/mp4">
+      </video>
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow"><span class="live-dot"></span> Hər gün 09:00 - 00:00</div>
@@ -1483,8 +1503,7 @@
             <button class="tab active" type="button" data-category="all">Hamısı</button>
             <button class="tab" type="button" data-category="kabab">Kabablar</button>
             <button class="tab" type="button" data-category="main">İsti yeməklər</button>
-            <button class="tab" type="button" data-category="snack">Qəlyanaltılar</button>
-            <button class="tab" type="button" data-category="tea">Çay süfrəsi</button>
+            <button class="tab" type="button" data-category="fish">Balıq</button>
           </div>
           <input class="menu-search" type="search" placeholder="Yemək axtar..." aria-label="Menyuda axtarış">
         </div>
@@ -1505,25 +1524,25 @@
         </div>
 
         <div class="gallery-grid">
-          <button class="gallery-item reveal" type="button" data-full="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1600&q=88">
-            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=86" alt="Rahat restoran interyeri">
-            <span>Rahat zal</span>
+          <button class="gallery-item reveal" type="button" data-full="assets/qaya-landscape.jpg">
+            <img src="assets/qaya-landscape.jpg" alt="Qaya Restaurant göl və dağ mənzərəsi">
+            <span>Dağ və göl mənzərəsi</span>
           </button>
-          <button class="gallery-item reveal" type="button" data-full="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=88">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=86" alt="Kabab servisi">
+          <button class="gallery-item reveal" type="button" data-full="assets/qaya-dish-mountain-kebab.jpg">
+            <img src="assets/qaya-dish-mountain-kebab.jpg" alt="Dağ mənzərəsində kabab servisi">
             <span>Kabablar</span>
           </button>
-          <button class="gallery-item reveal" type="button" data-full="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=1400&q=88">
-            <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=86" alt="Tərəvəz və salatlar">
-            <span>Salatlar</span>
+          <button class="gallery-item reveal" type="button" data-full="assets/qaya-cabin.jpg">
+            <img src="assets/qaya-cabin.jpg" alt="Qaya Restaurant ailə köşkü">
+            <span>Ailə köşkü</span>
           </button>
-          <button class="gallery-item reveal" type="button" data-full="https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1400&q=88">
-            <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=900&q=86" alt="Ailə süfrəsi">
-            <span>Ailə süfrəsi</span>
+          <button class="gallery-item reveal" type="button" data-full="assets/qaya-dish-fish.jpg">
+            <img src="assets/qaya-dish-fish.jpg" alt="Balıq süfrəsi">
+            <span>Balıq süfrəsi</span>
           </button>
-          <button class="gallery-item reveal" type="button" data-full="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1400&q=88">
-            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=86" alt="İsti ət yeməyi">
-            <span>İsti yeməklər</span>
+          <button class="gallery-item reveal" type="button" data-full="assets/qaya-grill-platter.jpg">
+            <img src="assets/qaya-grill-platter.jpg" alt="Manqal tabağı">
+            <span>Manqal tabağı</span>
           </button>
         </div>
       </div>
@@ -1647,18 +1666,11 @@
 
   <script>
     const dishes = [
-      { category: "kabab", name: "Tikə kabab", image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=86", text: "Kömür üstündə bişmiş klassik milli dad.", tags: ["Kabab", "Populyar"] },
-      { category: "kabab", name: "Lülə kabab", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=86", text: "Ətirli ədviyyat, isti lavaş və təzə göyərti ilə.", tags: ["Kabab", "Milli"] },
-      { category: "kabab", name: "Toyuq kababı", image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=900&q=86", text: "Yumşaq marinad, yüngül dad və ailə süfrəsi üçün uyğun porsiya.", tags: ["Toyuq", "Kabab"] },
-      { category: "kabab", name: "Antrekot", image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=86", text: "Sulu ət porsiyası, kömür dadı və isti servis.", tags: ["Ət", "Kabab"] },
-      { category: "main", name: "Dana sacı", image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=86", text: "Tərəvəzlə birlikdə isti servis olunan doyumlu seçim.", tags: ["İsti", "Paylaşımlıq"] },
-      { category: "main", name: "Qazan yeməyi", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=86", text: "Günün isti ev yeməyi seçimi.", tags: ["Milli", "Günün yeməyi"] },
-      { category: "main", name: "Tuşonka", image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=900&q=86", text: "Qonaqların rəylərində xüsusi vurğulanan isti ət yeməyi.", tags: ["İsti", "Xüsusi"] },
-      { category: "snack", name: "Badımcan ruleti", image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=86", text: "Süfrəyə yüngül başlanğıc üçün soyuq qəlyanaltı.", tags: ["Qəlyanaltı"] },
-      { category: "snack", name: "Təzə salat", image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=86", text: "Mövsümi tərəvəzlərlə süfrəni tamamlayan seçim.", tags: ["Yüngül"] },
-      { category: "tea", name: "Çay süfrəsi", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=86", text: "Qəbələ havasına uyğun isti çay və şirniyyat seçimi.", tags: ["Çay", "Ailə"] },
-      { category: "tea", name: "Dağ çiyələyi mürəbbəsi", image: "https://images.unsplash.com/photo-1601000938259-9e3f9a71f8aa?auto=format&fit=crop&w=900&q=86", text: "Çay süfrəsinə yerli dad qatan şirin seçim.", tags: ["Mürəbbə", "Yerli dad"] },
-      { category: "tea", name: "Qəbələ şirniyyatı", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=86", text: "Çaydan sonra yüngül və yadda qalan desert.", tags: ["Desert"] }
+      { category: "kabab", name: "Dağ mənzərəli kabab", image: "assets/qaya-dish-mountain-kebab.jpg", text: "Qəbələ dağları fonunda təqdim olunan iştahaçan kabab porsiyası.", tags: ["Kabab", "Dağ mənzərəsi"] },
+      { category: "main", name: "Qovurma", image: "assets/qaya-dish-meat-bowl.jpg", text: "Saxsı qabda təqdim olunan isti ət yeməyi, nar dənələri ilə daha fərqli görünür.", tags: ["İsti yemək", "Milli dad"] },
+      { category: "kabab", name: "Toyuq tabağı", image: "assets/qaya-dish-chicken.jpg", text: "Qızarmış toyuq parçaları, kartof və süfrəyə uyğun isti təqdimat.", tags: ["Toyuq", "Ailə süfrəsi"] },
+      { category: "fish", name: "Balıq süfrəsi", image: "assets/qaya-dish-fish.jpg", text: "Limon, soğan və qızarmış yanında servis olunan doyumlu balıq porsiyası.", tags: ["Balıq", "Təzə servis"] },
+      { category: "kabab", name: "Qarışıq manqal tabağı", image: "assets/qaya-grill-platter.jpg", text: "Manqal qarşısında hazırlanmış ət, kartof, badımcan və isti çörək dilimləri.", tags: ["Manqal", "Paylaşımlıq"] }
     ];
 
     const header = document.querySelector("[data-header]");
